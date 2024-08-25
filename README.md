@@ -28,7 +28,6 @@ Este projeto é um teste/desafio de programação desenvolvido em Java utilizand
 ### Tecnologias Utilizadas
 
 - **Java**: Linguagem de programação principal utilizada para desenvolver a aplicação.
-- **Spring Framework**: Framework para desenvolvimento de aplicações Java, utilizado para criar a API RESTful e gerenciar a lógica de negócios.
 - **Spring Boot**: Framework para simplificar o processo de configuração e execução de aplicações Spring.
 - **Spring Data JPA**: Utilizado para acessar e manipular dados no banco de dados PostgreSQL.
 - **PostgreSQL**: Sistema de gerenciamento de banco de dados relacional utilizado para armazenar os dados da aplicação.
