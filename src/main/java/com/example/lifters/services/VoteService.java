@@ -44,13 +44,13 @@ public class VoteService {
 
     @Transactional
     public void vote(String documentNumber, int numberOfCandidate) {
-        //Verifica se a sessao esta aberrtaa
+        //Regra de negocio 4 -> Verifica se a sessao esta aberrtaa
         SessionModel session = sessionService.getCurrentSession();
         if(!session.isOpen()){
             throw new IllegalStateException("Voting session is not open");
         }
 
-        // Verifica se o eleitor existe e se ele tem votos disponíveis
+        //Regra de negocio 1 -> Verifica se o eleitor existe e se ele tem votos disponíveis
         ConstituentModel constituent = constituentService.findConstituentByDocumentNumber(documentNumber)
                 .orElseThrow(() -> new EntityNotFoundException("Voter not found"));
 

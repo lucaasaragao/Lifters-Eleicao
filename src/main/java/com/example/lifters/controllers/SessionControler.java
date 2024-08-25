@@ -16,11 +16,13 @@ public class SessionControler {
     @PostMapping("/open")
     public ResponseEntity<String> openSession() {
         sessionService.openSession();
+        //Regra de negocio 5 -> Pode abrir ou encerrar a secao sem tempo entre elas
         return ResponseEntity.ok("Session opened");
     }
 
     @PatchMapping("/close")
     public ResponseEntity<String> closeSession() {
+        //Regra de negocio 6 -> Lembrar de implementar a varificacao de votos
         sessionService.closeSession();
         return ResponseEntity.ok("Session closed");
     }

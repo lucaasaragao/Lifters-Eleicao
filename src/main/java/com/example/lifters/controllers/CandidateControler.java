@@ -28,6 +28,7 @@ public class CandidateControler {
     public ResponseEntity<String> createCandidate(
             @RequestBody @Valid CandidateDto candidateDto) {
 
+        //Regra de negocio 2 -> verifica se o documento do candiddato ja esta cadastrado
         if (candidateService.getCandidateByDocumentNumber(candidateDto.getDocumentNumber())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: A candidate with this document number already exists.");
         }
@@ -70,6 +71,7 @@ public class CandidateControler {
     public ResponseEntity<String> removeCandidate(@PathVariable("id") UUID id) {
         CandidateModel candidate = candidateService.getCandidateById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Candidate not found"));
+        //Regra de negocio 3 -> verifica se o candidato tem voto (nao verifico se o eleitor tem voto, pois para mim essa regra ficou confusa)
         if (candidate.getNumberOfVotesReceived() > 0){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Candidate cannot be excluded because he already has votes");
         }
